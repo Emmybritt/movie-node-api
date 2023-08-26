@@ -14,6 +14,9 @@ class MoviesController {
             const year = parseInt(
                 (req.query.year as string | undefined) || '0',
             );
+            const genre = parseInt(
+                (req.query.genre as string | undefined) || '0',
+            );
 
             const skip = (page - 1) * pageSize;
             let query: any = {};
@@ -24,6 +27,9 @@ class MoviesController {
 
             if (year > 0) {
                 query.year = year;
+            }
+            if (genre > 0) {
+                query.genre = { $regex: genre, $options: 'i' };
             }
 
             const movies = await movie.find(query).skip(skip).limit(pageSize);
