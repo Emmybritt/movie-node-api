@@ -48,7 +48,6 @@ class MovieValidator {
             body('releaseDate').optional().isDate(),
         ];
     }
-
     checkParamId() {
         return [
             param('id')
