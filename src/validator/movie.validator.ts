@@ -14,6 +14,18 @@ class MovieValidator {
                 .isString()
                 .withMessage('Value of genre must be a string'),
 
+            body('duration')
+                .notEmpty()
+                .withMessage('Video duration is required')
+                .isString()
+                .withMessage('Value of duration must be a string'),
+
+            body('badge')
+                .notEmpty()
+                .withMessage('badge is required')
+                .isString()
+                .withMessage('badge must be a string'),
+
             body('director')
                 .optional()
                 .isString()

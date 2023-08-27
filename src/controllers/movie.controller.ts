@@ -63,6 +63,8 @@ class MoviesController {
             trailerURL,
             releaseYear,
             releaseDate,
+            badge,
+            duration,
         } = req.body;
         try {
             const newMovie = await movie.create({
@@ -76,6 +78,8 @@ class MoviesController {
                 trailerURL,
                 releaseYear,
                 releaseDate,
+                badge,
+                duration,
             });
             newMovie.save();
             return res
