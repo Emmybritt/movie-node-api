@@ -19,6 +19,7 @@ app.use(
     cors({
         credentials: true,
         origin: ['http://localhost:5173'],
+        // preflightContinue: true,
         allowedHeaders: [
             'Origin, X-Requested-With, Content-Type, Accept',
             'Authorization',
