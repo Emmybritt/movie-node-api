@@ -11,6 +11,7 @@ class MoviesController {
             const pageSize = parseInt(req.query.pageSize || '1000');
             const title = req.query.title;
             const year = parseInt(req.query.year || '0');
+            const genre = parseInt(req.query.genre || '0');
             const skip = (page - 1) * pageSize;
             let query = {};
             if (title) {
@@ -18,6 +19,9 @@ class MoviesController {
             }
             if (year > 0) {
                 query.year = year;
+            }
+            if (genre > 0) {
+                query.genre = { $regex: genre, $options: 'i' };
             }
             const movies = await movie_model_1.default.find(query).skip(skip).limit(pageSize);
             const totalCount = await movie_model_1.default.countDocuments(query);
