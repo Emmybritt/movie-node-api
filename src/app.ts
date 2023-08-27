@@ -17,7 +17,7 @@ app.use(function (req, res, next) {
 
 app.use(
     cors({
-        credentials: true,
+        credentials: false,
         origin: ['http://localhost:5173'],
         // preflightContinue: true,
         allowedHeaders: [
