@@ -14,6 +14,16 @@ class MovieValidator {
                 .withMessage('genre is required')
                 .isString()
                 .withMessage('Value of genre must be a string'),
+            (0, express_validator_1.body)('duration')
+                .notEmpty()
+                .withMessage('Video duration is required')
+                .isString()
+                .withMessage('Value of duration must be a string'),
+            (0, express_validator_1.body)('badge')
+                .notEmpty()
+                .withMessage('badge is required')
+                .isString()
+                .withMessage('badge must be a string'),
             (0, express_validator_1.body)('director')
                 .optional()
                 .isString()

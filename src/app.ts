@@ -8,7 +8,10 @@ const app = express();
 // app.use();
 app.use(
     cors({
-        origin: 'http://localhost:5173',
+        origin: [
+            'http://localhost:5173',
+            'https://endearing-gingersnap-e1b5d6.netlify.app/',
+        ],
         methods: ['GET', 'POST', 'PUT', 'DELETE'],
         credentials: false,
         allowedHeaders: [

@@ -42,7 +42,7 @@ class MoviesController {
         }
     }
     async createMovies(req, res) {
-        const { country, director, genre, title, plotSummary, rating, posterURL, trailerURL, releaseYear, releaseDate, } = req.body;
+        const { country, director, genre, title, plotSummary, rating, posterURL, trailerURL, releaseYear, releaseDate, badge, duration, } = req.body;
         try {
             const newMovie = await movie_model_1.default.create({
                 country,
@@ -55,6 +55,8 @@ class MoviesController {
                 trailerURL,
                 releaseYear,
                 releaseDate,
+                badge,
+                duration,
             });
             newMovie.save();
             return res

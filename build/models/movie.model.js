@@ -12,7 +12,9 @@ const movieSchema = new Schema({
     genre: { type: String, required: true },
     director: { type: String },
     country: { type: String },
+    duration: { type: String, required: true },
     plotSummary: { type: String, required: true },
+    badge: { type: String, required: true },
     posterURL: { type: String, required: true },
     trailerURL: { type: String },
     rating: { type: Number, default: 4 },
@@ -21,5 +23,5 @@ const movieSchema = new Schema({
     createdAt: { type: Date, default: Date.now() },
     updatedAt: { type: Date, default: Date.now() },
 }, { versionKey: false });
-const movie = mongoose_1.default.model("movies", movieSchema);
+const movie = mongoose_1.default.model('movies', movieSchema);
 exports.default = movie;
