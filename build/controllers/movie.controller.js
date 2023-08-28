@@ -5,13 +5,56 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const movie_model_1 = __importDefault(require("../models/movie.model"));
 class MoviesController {
+    // async getAllMovies(req: Request, res: Response) {
+    //     try {
+    //         const page = parseInt(
+    //             (req.query.page as string | undefined) || '1',
+    //         );
+    //         const pageSize = parseInt(
+    //             (req.query.pageSize as string | undefined) || '1000',
+    //         );
+    //         const title = req.query.title as string | undefined;
+    //         const year = parseInt(
+    //             (req.query.year as string | undefined) || '0',
+    //         );
+    //         const genre = parseInt(
+    //             (req.query.genre as string | undefined) || '0',
+    //         );
+    //         const skip = (page - 1) * pageSize;
+    //         let query: any = {};
+    //         if (title) {
+    //             query.title = { $regex: title, $options: 'i' };
+    //         }
+    //         if (year > 0) {
+    //             query.year = year;
+    //         }
+    //         if (genre > 0) {
+    //             query.genre = { $regex: genre, $options: 'i' };
+    //         }
+    //         const movies = await movie.find(query).skip(skip).limit(pageSize);
+    //         const totalCount = await movie.countDocuments(query);
+    //         return res.status(200).json({
+    //             msg: 'Movies found',
+    //             status: true,
+    //             movies,
+    //             total: totalCount,
+    //             page,
+    //             pageSize,
+    //         });
+    //     } catch (error) {
+    //         console.error(error);
+    //         return res
+    //             .status(500)
+    //             .json({ msg: 'An Error Occurred', status: false });
+    //     }
+    // }
     async getAllMovies(req, res) {
         try {
             const page = parseInt(req.query.page || '1');
             const pageSize = parseInt(req.query.pageSize || '1000');
             const title = req.query.title;
             const year = parseInt(req.query.year || '0');
-            const genre = parseInt(req.query.genre || '0');
+            const genre = req.query.genre;
             const skip = (page - 1) * pageSize;
             let query = {};
             if (title) {
@@ -20,8 +63,8 @@ class MoviesController {
             if (year > 0) {
                 query.year = year;
             }
-            if (genre > 0) {
-                query.genre = { $regex: genre, $options: 'i' };
+            if (genre) {
+                query.genre = genre;
             }
             const movies = await movie_model_1.default.find(query).skip(skip).limit(pageSize);
             const totalCount = await movie_model_1.default.countDocuments(query);
