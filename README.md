@@ -12,10 +12,6 @@ This is a RESTful API for managing movie data.
     -   [Running the Application](#running-the-application)
 
 -   [API Endpoints](#api-endpoints)
--   [Authentication](#authentication)
--   [Testing](#testing)
--   [Contributing](#contributing)
--   [License](#license)
 
 ## Prerequisites
 
